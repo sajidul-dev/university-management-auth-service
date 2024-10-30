@@ -2,7 +2,7 @@ import { Application } from 'express';
 import express from 'express';
 import cors from 'cors';
 import globalErrorHandler from './app/middlewires/globalErrorHandler';
-import { UserRoutes } from './app/modules/user/user.route';
+import routes from './app/routes';
 
 // const express = require("express");
 const app: Application = express();
@@ -13,7 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Application routes
-app.use('/api/v1/users/', UserRoutes);
+// app.use('/api/v1/users/', UserRoutes);
+// app.use('/api/v1/academic-semesters/', AcademicSemesterRoutes);
+
+app.use('/api/v1/', routes);
 
 // Testing
 // app.get('/', async (req: Request, res: Response) => {
