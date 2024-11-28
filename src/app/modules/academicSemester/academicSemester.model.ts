@@ -14,7 +14,7 @@ import ApiError from '../../../errors/ApiError';
 const academicSemesterSchema = new Schema<IAcademicSemester>(
   {
     title: { type: String, required: true, enum: academicSemesterTitles },
-    year: { type: Number, required: true },
+    year: { type: String, required: true },
     code: { type: String, required: true, enum: academicSemesterCodes },
     startMonth: {
       type: String,
@@ -23,7 +23,12 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
     },
     endMonth: { type: String, required: true, enum: academicSemesterMonths },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+  },
 );
 
 // handling same year and same semester issue

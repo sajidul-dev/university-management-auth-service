@@ -7,7 +7,12 @@ const userSchema = new Schema<IUser>(
     role: { type: String, required: true },
     password: String,
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+  },
 );
 
 export const User = model<IUser, UserModel>('User', userSchema);
