@@ -62,7 +62,7 @@ const getAcademicFaculty = async (
     .sort(sortCondition)
     .skip(skip)
     .limit(limit);
-  const total = await AcademicFaculty.countDocuments();
+  const total = await AcademicFaculty.countDocuments(whereCondition);
   return {
     meta: {
       page,
